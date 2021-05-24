@@ -54,6 +54,7 @@ $ python manage.py createsuperuser
 $ python manage.py runserver
 ```
 #### Run tests
+You can launch some unit tests for models, views, urls, forms.
 ```shell
 $ python manage.py test
 ```
