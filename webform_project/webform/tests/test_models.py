@@ -14,6 +14,10 @@ class TestFormModel(TestCase):
     def test_form_exist(self):
         self.assertTrue(Form.objects.filter(name=NAME).exists())
 
+    def test_model_str(self):
+        name = Form.objects.filter(name=NAME)[0].name
+        self.assertEquals(name, NAME)
+
     def test_name_max_length(self):
         form = Form.objects.get(id=1)
         max_length = form._meta.get_field('name').max_length
