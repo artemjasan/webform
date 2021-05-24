@@ -12,7 +12,7 @@ EMAIL_LONG = EMAIL * 100
 EMAIL_NONE = None
 
 # Ico constants
-ICO = "27074358"
+ICO = "27074358"  # default test ico from ARES
 ICO_NONE = None
 ICO_INCORRECT = "27074350"
 ICO_LONG = ICO + "000"

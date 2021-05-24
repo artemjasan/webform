@@ -10,12 +10,12 @@ class TestForms(TestCase):
         form = CreateForm(data=DATA_VALID)
         self.assertTrue(form.is_valid())
 
-    def test_create_form_invalid_all_data(self):
+    def test_create_form_no_data(self):
         form = CreateForm(data={})
         self.assertFalse(form.is_valid())
         self.assertEquals(len(form.errors), 2)
 
-    def test_create_form_invalid_data_name(self):
+    def test_create_form_invalid_data_no_name(self):
         form = CreateForm(data=FormUtils.DATA_INVALID_NAME)
         self.assertFalse(form.is_valid())
         self.assertEquals(len(form.errors), 1)
@@ -30,7 +30,7 @@ class TestForms(TestCase):
         self.assertFalse(form.is_valid())
         self.assertEquals(len(form.errors), 1)
 
-    def test_create_form_invalid_data_email_none(self):
+    def test_create_form_invalid_data_no_email(self):
         form = CreateForm(data=FormUtils.DATA_EMAIL_NONE)
         self.assertTrue(form.is_valid())
 
@@ -44,7 +44,7 @@ class TestForms(TestCase):
         self.assertFalse(form.is_valid())
         self.assertEquals(len(form.errors), 1)
 
-    def test_create_form_invalid_data_ico_none(self):
+    def test_create_form_invalid_data_no_ico(self):
         form = CreateForm(data=FormUtils.DATA_INVALID_ICO_NONE)
         self.assertFalse(form.is_valid())
         self.assertEquals(len(form.errors), 1)
@@ -56,8 +56,8 @@ class TestForms(TestCase):
         self.assertFalse(new_form.is_valid())
         self.assertEquals(len(new_form.errors), 1)
 
-    """def test_create_form_invalid_data_long_ico(self):
+    def test_create_form_invalid_data_long_ico(self):
         form = CreateForm(data=FormUtils.DATA_LONG_ICO)
         self.assertFalse(form.is_valid())
         self.assertEquals(len(form.errors), 1)
-"""
+
