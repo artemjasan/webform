@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+<h1>Web Form</h1>
+
+<h3> {{ note }}</h3>
+
+<form enctype="" action="{% url 'post-form'%}" method="post" >
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>
+
