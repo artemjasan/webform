@@ -17,10 +17,7 @@ def ico_exists(ico: str):
             if occurrence_text.isnumeric():
                 value = int(occurrence_text)
                 if value != 1:
-                    raise ValidationError(
-                        _('%(value)s is an invalid ico'),
-                        params={'value': ico},
-                    )
+                    raise ValidationError('Enter a valid ico.')
             else:
                 raise ValueError(f"API returned unexpected value: {occurrence_text}")
         else:

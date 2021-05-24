@@ -6,9 +6,10 @@ NAME_NONE = None
 NAME_LONG = NAME * 100
 
 # Email constants
+EMAIL_BASE = 'email'
 EMAIL = "email@email.com"
 EMAIL_INCORRECT = "emailemail.com"
-EMAIL_LONG = EMAIL * 100
+EMAIL_LONG = EMAIL_BASE * 100 + '@email.com'
 EMAIL_NONE = None
 
 # Ico constants
@@ -41,3 +42,14 @@ class FormUtils:
     DATA_INVALID_ICO = update_dict('ico', ICO_INCORRECT)
     DATA_INVALID_ICO_NONE = update_dict('ico', ICO_NONE)
     DATA_LONG_ICO = update_dict('ico', ICO_LONG)
+
+
+@dataclass
+class TextError:
+    FIELD_REQUIRED = 'This field is required.'
+    FIELD_UNIQUE = 'Form with this Ico already exists.'
+    NAME_FIELD_LONG = 'Ensure this value has at most 255 characters (it has 900).'
+    EMAIL_FIELD_LONG = 'Ensure this value has at most 255 characters (it has 510).'
+    ICO_FIELD_LONG = 'Ensure this value has at most 8 characters (it has 11).'
+    INVALID_EMAIL = 'Enter a valid email address.'
+    INVALID_ICO = 'Enter a valid ico.'
