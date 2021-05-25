@@ -15,8 +15,6 @@ Web application in Django that allows you to fill in and save a form.
 - pytz==2021.1
 - requests==2.25.1
 - sqlparse==0.4.1
-- style==1.1.0
-- update==0.0.1
 - urllib3==1.26.4
 
 ### Commands
