@@ -56,3 +56,9 @@ You can launch some unit tests for models, views, urls, forms.
 ```shell
 $ python manage.py test
 ```
+#### Note
+In case of problems with the CSRF token, you might need to close the tab in the browser and open it again
+###### Description
+For security purposes, the CSRF token is changed ('rotated') when you log in (in our case log in as an admin user). 
+If you open a page in Tab A, then log in on Tab B, then attempt to submit the form in Tab A, you will get a CSRF error,
+because the CSRF token in Tab A is out of date.
