@@ -1,6 +1,6 @@
 from django.shortcuts import render
+
 from .forms import CreateForm
-from .ico_validation import ico_exists
 
 
 def post_form(request):

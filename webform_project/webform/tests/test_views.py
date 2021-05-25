@@ -1,7 +1,7 @@
 from django.test import Client, TestCase
 from django.urls import reverse
 
-from .utils import NAME, EMAIL, ICO, DATA_VALID
+from .utils import DATA_VALID
 from ..models import Form
 
 
