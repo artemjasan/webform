@@ -31,7 +31,7 @@ $ source venv/bin/activate
 ```
 - Update pip:
 ```shell
-$ pip install update
+$ pip install --upgrade pip
 ```
 - Install the requirements:
 ```shell
