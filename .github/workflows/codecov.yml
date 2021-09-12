@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        coverage run tests.py
+        coverage run manage.py tests
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
