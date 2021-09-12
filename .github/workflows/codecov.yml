@@ -2,30 +2,39 @@ name: Django CI
 
 on:
   push:
-    branches: [master]
+    branches: [ main ]
   pull_request:
-    branches: [master]
+    branches: [ main ]
 
 jobs:
-  run:
+  build:
+
     runs-on: ubuntu-latest
-    env:
-      OS: ubuntu-latest
-      PYTHON: '3.9'
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.7, 3.8, 3.9]
+
     steps:
     - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
       with:
-        fetch-depth: ‘2’
-
-    - name: Setup Python
-      uses: actions/setup-python@master
-      with:
-        python-version: 3.7
-    - name: Generate Report
+        python-version: ${{ matrix.python-version }}
+    - name: Install Dependencies
       run: |
-        pip install coverage
-        coverage run manage.py test
-    - name: Upload Coverage to Codecov
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run Tests
+      run: |
+        python manage.py test
+              - name: Run Tests
+        env:
+          DEBUG: 1
+        run: |
+          pytest --tb=no --cov --cov-report=xml --cov-report=term
+
+    - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
       with:
         file: ./coverage.xml
