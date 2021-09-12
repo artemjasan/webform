@@ -4,7 +4,6 @@ source = webform_project
 omit =
     **/tests/*
     **/core/*
-    **/users/*
     **/migrations/*
     **/manage.py
     **/urls.py
