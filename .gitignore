@@ -338,5 +338,8 @@ fabric.properties
 *.code-workspace
 .idea/*
 
+*.gcno
+*.gcda
+*.gcov
 
 # End of https://www.toptal.com/developers/gitignore/api/python,django,pycharm,vscode,linux
