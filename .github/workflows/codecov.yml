@@ -1,17 +1,37 @@
-name: Codecov
-on: [push, pull_request]
+name: Django CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
-  run:
+  build:
+
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.7, 3.8, 3.9]
+
     steps:
-      - name: Fetch
-        uses: actions/checkout@master
-      - name: Test
-        run: |
-          gcc -ftest-coverage -fprofile-arcs -O0 -o test test.c lib.c
-          ./test
-          gcov -abcfu lib.c
-      - name: Upload
-        uses: codecov/codecov-action@v1
-        with:
-          files: ./lib.c.gcov
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run Tests
+      run: |
+        python manage.py test
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v2
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: test-cov
