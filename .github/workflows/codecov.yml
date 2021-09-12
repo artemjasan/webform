@@ -27,12 +27,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python manage.py test
-              - name: Run Tests
-        env:
-          DEBUG: 1
-        run: |
-          pytest --tb=no --cov --cov-report=xml --cov-report=term
+        coverage run tests.py
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
