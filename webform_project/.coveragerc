@@ -1,0 +1,16 @@
+[run]
+branch = True
+source = .
+omit =
+    */tests/*
+    */core/*
+    */migrations/*
+    */manage.py
+    */apps.py
+    */admin.py
+    */utils/*
+
+[report]
+exclude_lines =
+    def __str__
+    def __repr__
